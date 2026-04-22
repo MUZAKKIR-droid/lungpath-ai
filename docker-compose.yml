@@ -1,0 +1,22 @@
+services:
+  backend:
+    build: .
+    container_name: lung_cancer_backend
+    volumes:
+      - ./static:/app/static
+    environment:
+      - FLASK_ENV=production
+    expose:
+      - "5000"
+    restart: always
+
+  nginx:
+    image: nginx:latest
+    container_name: lung_cancer_nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - backend
+    restart: always
