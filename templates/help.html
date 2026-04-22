@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card" style="max-width: 800px;">
+  <h2 class="text-center"><i class="fa-solid fa-life-ring"></i> Help Center</h2>
+  <p class="text-center">Need assistance? Follow our quick guide below or reach out to our support team.</p>
+
+  <div style="margin-top: 30px;">
+    <h3><i class="fa-solid fa-list-ol"></i> How to use LungDetect AI</h3>
+    <ol style="margin-left: 20px; color: var(--text-muted); line-height: 2; margin-bottom: 30px;">
+      <li>Navigate to the <a href="/" style="color: var(--primary-blue); text-decoration: underline;">Home Page</a>.</li>
+      <li>Click on the designated upload area or drag-and-drop your medical scan image (CT or X-Ray).</li>
+      <li>Review the image preview to ensure you selected the correct file.</li>
+      <li>Click the <strong>Analyze Image</strong> button.</li>
+      <li>Wait a few seconds for our Deep Learning Model to process the scan.</li>
+      <li>Review your results and AI confidence score on the Analysis Report page.</li>
+      <li>If you wish to calculate your personal risk factors, visit the <a href="/risk" style="color: var(--primary-blue); text-decoration: underline;">Risk Assessment</a> page.</li>
+    </ol>
+
+    <h3><i class="fa-solid fa-envelope-open-text"></i> Contact Us</h3>
+    <p>If you encounter technical issues or have questions regarding this educational demonstration, please contact the developer:</p>
+    
+    <div style="background-color: var(--secondary-blue); padding: 15px; border-radius: 8px; display: inline-block; margin-top: 10px;">
+      <strong><i class="fa-solid fa-envelope" style="color: var(--primary-blue);"></i> Email:</strong> 
+      <a href="mailto:support@lungdetectai-demo.com" style="color: var(--primary-blue); text-decoration: none;">support@lungdetectai-demo.com</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+env/
+.env
+
+# OS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# Local model weights (if they are large and shouldn't be in git)
+# model/*.h5
+
+# Docker
+.dockerignore
+docker-compose.yml
+nginx/

@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card" style="max-width: 800px;">
+  <header style="text-align: center; margin-bottom: 40px;">
+    <h1>Knowledge Base</h1>
+    <p>Information regarding lung health, prevention, and detection standards.</p>
+  </header>
+
+  <section style="margin-bottom: 40px;">
+    <h2 style="font-size: 18px; font-weight: 600; color: var(--primary); margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+      <i class="fa-solid fa-lungs"></i> Common Symptoms
+    </h2>
+    <p style="margin-bottom: 16px;">Early-stage lung cancer often presents with subtle indicators. Recognized clinical symptoms include:</p>
+    <ul style="list-style: none; display: grid; gap: 8px;">
+      <li style="display: flex; gap: 12px; align-items: flex-start; font-size: 14px;">
+        <i class="fa-solid fa-check" style="color: var(--success); margin-top: 4px;"></i>
+        Persistent cough that intensifies over time.
+      </li>
+      <li style="display: flex; gap: 12px; align-items: flex-start; font-size: 14px;">
+        <i class="fa-solid fa-check" style="color: var(--success); margin-top: 4px;"></i>
+        Hemoptysis (coughing up blood or rust-colored sputum).
+      </li>
+      <li style="display: flex; gap: 12px; align-items: flex-start; font-size: 14px;">
+        <i class="fa-solid fa-check" style="color: var(--success); margin-top: 4px;"></i>
+        Localized chest pain exacerbated by deep respiration.
+      </li>
+      <li style="display: flex; gap: 12px; align-items: flex-start; font-size: 14px;">
+        <i class="fa-solid fa-check" style="color: var(--success); margin-top: 4px;"></i>
+        Dyspnea (shortness of breath) or unexplained fatigue.
+      </li>
+    </ul>
+  </section>
+
+  <section style="margin-bottom: 40px;">
+    <h2 style="font-size: 18px; font-weight: 600; color: var(--primary); margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+      <i class="fa-solid fa-shield-virus"></i> Prevention & Risk Reduction
+    </h2>
+    <p style="margin-bottom: 16px;">Statistically, smoking remains the primary etiological factor. Preventive measures include:</p>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div style="background: #F8FAFC; padding: 16px; border-radius: 8px; border: 1px solid var(--border);">
+        <p class="text-small" style="font-weight: 600; color: var(--text-primary); margin-bottom: 4px;">Tobacco Cessation</p>
+        <p class="text-small">Immediate reduction in risk occurs upon cessation of smoking habits.</p>
+      </div>
+      <div style="background: #F8FAFC; padding: 16px; border-radius: 8px; border: 1px solid var(--border);">
+        <p class="text-small" style="font-weight: 600; color: var(--text-primary); margin-bottom: 4px;">Environmental Safety</p>
+        <p class="text-small">Testing for radon gas and avoiding occupational carcinogens like asbestos.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer style="background: #EFF6FF; padding: 20px; border-radius: 8px; border: 1px solid #DBEAFE;">
+    <h3 style="font-size: 16px; font-weight: 600; color: var(--primary); margin-bottom: 8px;">Clinical Importance</h3>
+    <p class="text-small">Early detection via low-dose CT screening significantly improves 5-year survival rates. <strong>LungPath AI</strong> serves as a preliminary analysis bridge for research and screening support.</p>
+  </footer>
+</div>
+{% endblock %}

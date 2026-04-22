@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="max-width: 1000px; width: 100%;">
+  <header style="text-align: center; margin-bottom: 48px;">
+    <h1>Medical Specialists</h1>
+    <p>Find qualified oncologists and pulmonologists for professional consultation.</p>
+  </header>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
+    <!-- Doctor 1 -->
+    <div class="card" style="text-align: center; padding: 32px;">
+      <div style="width: 64px; height: 64px; background: #EFF6FF; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+        <i class="fa-solid fa-user-doctor" style="font-size: 24px; color: var(--primary);"></i>
+      </div>
+      <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 4px;">Dr. Sarah Jenkins</h3>
+      <p class="text-small" style="font-weight: 500; color: var(--primary); margin-bottom: 12px;">Chief Oncologist</p>
+      <p class="text-small" style="margin-bottom: 20px;"><i class="fa-solid fa-location-dot"></i> City General Hospital</p>
+      <button class="btn btn-secondary" style="font-size: 14px; padding: 8px 16px;">Book Consultation</button>
+    </div>
+
+    <!-- Doctor 2 -->
+    <div class="card" style="text-align: center; padding: 32px;">
+      <div style="width: 64px; height: 64px; background: #EFF6FF; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+        <i class="fa-solid fa-stethoscope" style="font-size: 24px; color: var(--primary);"></i>
+      </div>
+      <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 4px;">Dr. Robert Chen</h3>
+      <p class="text-small" style="font-weight: 500; color: var(--primary); margin-bottom: 12px;">Pulmonology Specialist</p>
+      <p class="text-small" style="margin-bottom: 20px;"><i class="fa-solid fa-location-dot"></i> Westside Medical Center</p>
+      <button class="btn btn-secondary" style="font-size: 14px; padding: 8px 16px;">Book Consultation</button>
+    </div>
+
+    <!-- Doctor 3 -->
+    <div class="card" style="text-align: center; padding: 32px;">
+      <div style="width: 64px; height: 64px; background: #EFF6FF; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+        <i class="fa-solid fa-user-nurse" style="font-size: 24px; color: var(--primary);"></i>
+      </div>
+      <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 4px;">Dr. Emily Watson</h3>
+      <p class="text-small" style="font-weight: 500; color: var(--primary); margin-bottom: 12px;">Thoracic Surgeon</p>
+      <p class="text-small" style="margin-bottom: 20px;"><i class="fa-solid fa-location-dot"></i> National Health Institute</p>
+      <button class="btn btn-secondary" style="font-size: 14px; padding: 8px 16px;">Book Consultation</button>
+    </div>
+  </div>
+</div>
+{% endblock %}

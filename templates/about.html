@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card text-center" style="max-width: 700px;">
+  <h2><i class="fa-solid fa-circle-info"></i> About LungDetect AI</h2>
+  
+  <div style="margin: 30px 0;">
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" style="max-width: 150px; border-radius: 50%; display: none;" onerror="this.style.display='none'">
+    <i class="fa-solid fa-laptop-medical" style="font-size: 5rem; color: var(--primary-blue);"></i>
+  </div>
+
+  <p style="font-size: 1.1rem; color: var(--text-primary); font-weight: 500;">Developed by <strong>Muzakkir Mahbub</strong> and <strong>Permeet Singh</strong></p>
+  <p style="font-size: 1rem; color: var(--primary-color); font-weight: 600; margin-top: 5px;">Under the supervision of <strong>Amita Sharma</strong></p>
+  
+  <p style="margin-top: 20px;">
+    LungDetect AI is an artificial intelligence-based lung cancer detection system created as a demonstration project. It leverages the power of deep learning to analyze medical imagery and predict potential abnormalities.
+  </p>
+
+  <h3 style="margin-top: 30px; border-bottom: 2px solid var(--secondary-blue); padding-bottom: 10px; display: inline-block;">Technologies Used</h3>
+  
+  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 20px;">
+    <div style="background: var(--bg-light); padding: 10px 20px; border-radius: 20px; font-weight: 600; color: var(--primary-blue); border: 1px solid var(--secondary-blue);">
+      <i class="fa-brands fa-python"></i> Python
+    </div>
+    <div style="background: var(--bg-light); padding: 10px 20px; border-radius: 20px; font-weight: 600; color: var(--primary-blue); border: 1px solid var(--secondary-blue);">
+      <i class="fa-solid fa-fire-flame-curved"></i> PyTorch
+    </div>
+    <div style="background: var(--bg-light); padding: 10px 20px; border-radius: 20px; font-weight: 600; color: var(--primary-blue); border: 1px solid var(--secondary-blue);">
+      <i class="fa-solid fa-network-wired"></i> CNN (ResNet-18)
+    </div>
+    <div style="background: var(--bg-light); padding: 10px 20px; border-radius: 20px; font-weight: 600; color: var(--primary-blue); border: 1px solid var(--secondary-blue);">
+      <i class="fa-solid fa-server"></i> Flask Web Framework
+    </div>
+    <div style="background: var(--bg-light); padding: 10px 20px; border-radius: 20px; font-weight: 600; color: var(--primary-blue); border: 1px solid var(--secondary-blue);">
+      <i class="fa-solid fa-camera"></i> OpenCV / PIL
+    </div>
+  </div>
+</div>
+{% endblock %}

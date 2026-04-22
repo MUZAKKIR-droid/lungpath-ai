@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card" style="max-width: 800px;">
+  <header style="text-align: center; margin-bottom: 40px;">
+    <h1>Common Questions</h1>
+    <p>Answers to clinical and technical inquiries about the AI diagnostic system.</p>
+  </header>
+
+  <div style="display: grid; gap: 24px;">
+    <div style="padding-bottom: 24px; border-bottom: 1px solid var(--border);">
+      <h3 style="font-size: 16px; font-weight: 600; color: var(--text-primary); margin-bottom: 8px;">System Accuracy & Clinical Reliability</h3>
+      <p class="text-small">Our AI model utilizes ResNet-18 architecture trained on validated medical imaging datasets. While it achieves high sensitivity, it is designed for screening support and should not be used as a standalone diagnostic tool.</p>
+    </div>
+
+    <div style="padding-bottom: 24px; border-bottom: 1px solid var(--border);">
+      <h3 style="font-size: 16px; font-weight: 600; color: var(--text-primary); margin-bottom: 8px;">Data Privacy & Handling</h3>
+      <p class="text-small">Uploaded scans are processed in an isolated container environment. No patient identifiable information (PII) is persisted on our servers beyond the active analysis session.</p>
+    </div>
+
+    <div style="padding-bottom: 24px; border-bottom: 1px solid var(--border);">
+      <h3 style="font-size: 16px; font-weight: 600; color: var(--text-primary); margin-bottom: 8px;">Next Steps After Result</h3>
+      <p class="text-small">If the system identifies potential abnormalities, you should download the PDF report and consult a board-certified pulmonologist. You can view our directory of specialists on the <a href="/doctors" style="color: var(--primary); font-weight: 500; text-decoration: none;">specialists page</a>.</p>
+    </div>
+    
+    <div>
+      <h3 style="font-size: 16px; font-weight: 600; color: var(--text-primary); margin-bottom: 8px;">Supported Imaging Modalities</h3>
+      <p class="text-small">The current model supports Chest Computed Tomography (CT) scans and standard posterior-anterior (PA) chest radiographs (X-Rays).</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+  <header style="text-align: center; margin-bottom: 32px;">
+    <h1>Risk Assessment</h1>
+    <p>Answer a few questions to estimate your general lung health risk factors.</p>
+  </header>
+
+  <form id="riskForm">
+    <div class="form-group">
+      <label class="form-label">Current Age</label>
+      <input type="number" id="age" class="form-control" required min="18" max="120" placeholder="Years">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Smoking History</label>
+      <select id="smoking" class="form-control" required>
+        <option value="" disabled selected>Select an option</option>
+        <option value="never">Never Smoked</option>
+        <option value="past">Former Smoker</option>
+        <option value="current">Current Smoker</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Family Medical History</label>
+      <select id="family" class="form-control" required>
+        <option value="" disabled selected>Select an option</option>
+        <option value="no">No History of Lung Cancer</option>
+        <option value="yes">Positive Family History</option>
+      </select>
+    </div>
+
+    <button type="button" class="btn" style="margin-top: 12px;" onclick="calculateRisk()">
+      Calculate Health Risk
+    </button>
+  </form>
+
+  <div id="riskResult" style="display: none; margin-top: 32px; padding: 24px; border-radius: var(--radius); text-align: center; border: 1px solid var(--border);">
+    <!-- Result injected by JS -->
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  function calculateRisk() {
+    const age = parseInt(document.getElementById('age').value);
+    const smoking = document.getElementById('smoking').value;
+    const family = document.getElementById('family').value;
+
+    if (!age || !smoking || !family) {
+      alert("Please fill out all fields.");
+      return;
+    }
+
+    let score = 0;
+    if (age > 50) score += 2;
+    else if (age > 40) score += 1;
+    if (smoking === 'current') score += 4;
+    else if (smoking === 'past') score += 2;
+    if (family === 'yes') score += 3;
+
+    let riskLevel = "";
+    let indicatorClass = "";
+    let message = "";
+
+    if (score >= 5) {
+      riskLevel = "High Probability";
+      indicatorClass = "status-cancer";
+      message = "Your clinical profile shows significant risk factors. Consultation with a specialist is strongly recommended.";
+    } else if (score >= 3) {
+      riskLevel = "Moderate Probability";
+      indicatorClass = "status-cancer"; 
+      message = "Several risk factors identified. Consider routine screening as per standard guidelines.";
+    } else {
+      riskLevel = "Low Probability";
+      indicatorClass = "status-normal";
+      message = "Standard risk level. Maintain a healthy lifestyle and avoid exposure to carcinogens.";
+    }
+
+    const resultDiv = document.getElementById('riskResult');
+    resultDiv.style.display = 'block';
+    resultDiv.innerHTML = `
+      <div class="status-indicator ${indicatorClass}" style="margin-bottom: 12px;">${riskLevel}</div>
+      <p class="text-small" style="font-weight: 500; color: var(--text-primary);">${message}</p>
+    `;
+  }
+</script>
+{% endblock %}

@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+  <header style="margin-bottom: 32px; text-align: center;">
+    <h1>Scan Analysis</h1>
+    <p>Upload a chest CT scan or X-Ray for automated abnormality detection.</p>
+  </header>
+  
+  <form id="uploadForm" action="/predict" method="post" enctype="multipart/form-data">
+    
+    <div class="upload-zone" id="dropArea" onclick="document.getElementById('fileInput').click()">
+      <i class="fa-solid fa-cloud-arrow-up"></i>
+      <h3>Click or drag scan to upload</h3>
+      <p class="text-small">Supports JPG, PNG, JPEG (Max 20MB)</p>
+      <input type="file" name="image" id="fileInput" accept="image/*" required onchange="previewImage(event)" style="display: none;">
+    </div>
+    
+    <div id="imagePreviewContainer" style="display: none; margin-bottom: 24px;">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+        <span class="form-label" style="margin-bottom: 0;">Scan Preview</span>
+        <button type="button" onclick="resetUpload()" style="background: none; border: none; color: var(--error); font-size: 12px; cursor: pointer; font-weight: 500;">Remove</button>
+      </div>
+      <img id="imagePreview" src="#" alt="Preview" style="width: 100%; border-radius: 8px; border: 1px solid var(--border); display: block;">
+    </div>
+
+    <div style="margin-bottom: 24px;">
+      <h3 style="font-size: 14px; font-weight: 600; margin-bottom: 16px; color: var(--text-primary);">Patient Information</h3>
+      <div style="display: grid; grid-template-columns: 1fr; gap: 16px;">
+        <div class="form-group" style="margin-bottom: 0;">
+          <label class="form-label">Patient Age</label>
+          <input type="number" name="age" required class="form-control" min="1" max="120" placeholder="Years">
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <div class="form-group" style="margin-bottom: 0;">
+            <label class="form-label">Smoking History</label>
+            <select name="smoking" required class="form-control">
+              <option value="" disabled selected>Select</option>
+              <option value="No">No</option>
+              <option value="Yes">Yes</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin-bottom: 0;">
+            <label class="form-label">Family History</label>
+            <select name="family_history" required class="form-control">
+              <option value="" disabled selected>Select</option>
+              <option value="No">No</option>
+              <option value="Yes">Yes</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" class="btn">
+      Run AI Diagnostic Analysis
+    </button>
+  </form>
+
+  <div style="margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--border);">
+    <p class="text-small" style="display: flex; gap: 8px;">
+      <i class="fa-solid fa-circle-info" style="color: var(--primary); margin-top: 2px;"></i>
+      <span>This system uses a ResNet-18 architecture trained on clinical datasets. For research use only.</span>
+    </p>
+  </div>
+</div>
+
+<div class="loader-overlay" id="loaderOverlay">
+  <div class="spinner"></div>
+  <h2 style="font-size: 18px; font-weight: 600;">Processing Clinical Data</h2>
+  <p class="text-small">Our AI is analyzing the scan imaging...</p>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  const dropArea = document.getElementById('dropArea');
+  const fileInput = document.getElementById('fileInput');
+  
+  ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+    dropArea.addEventListener(eventName, e => {
+      e.preventDefault();
+      e.stopPropagation();
+    }, false);
+  });
+  
+  ['dragenter', 'dragover'].forEach(eventName => {
+    dropArea.addEventListener(eventName, () => {
+      dropArea.style.borderColor = 'var(--primary)';
+      dropArea.style.background = '#EFF6FF';
+    }, false);
+  });
+  
+  ['dragleave', 'drop'].forEach(eventName => {
+    dropArea.addEventListener(eventName, () => {
+      dropArea.style.borderColor = '';
+      dropArea.style.background = '';
+    }, false);
+  });
+  
+  dropArea.addEventListener('drop', e => {
+    const files = e.dataTransfer.files;
+    fileInput.files = files;
+    previewImage({ target: { files: files } });
+  }, false);
+
+  function previewImage(event) {
+    const reader = new FileReader();
+    reader.onload = function(){
+      const previewContainer = document.getElementById('imagePreviewContainer');
+      const previewImage = document.getElementById('imagePreview');
+      previewImage.src = reader.result;
+      previewContainer.style.display = 'block';
+      dropArea.style.display = 'none';
+    };
+    if(event.target.files[0]) {
+      reader.readAsDataURL(event.target.files[0]);
+    }
+  }
+
+  function resetUpload() {
+    fileInput.value = '';
+    document.getElementById('imagePreviewContainer').style.display = 'none';
+    dropArea.style.display = 'block';
+  }
+
+  document.getElementById('uploadForm').addEventListener('submit', function() {
+    document.getElementById('loaderOverlay').style.display = 'flex';
+  });
+</script>
+{% endblock %}
